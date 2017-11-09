@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Kloudless File Explorer</title>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js.map"></script> -->
+  <script src="marked.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+  <script src="https://static-cdn.kloudless.com/p/platform/sdk/kloudless.explorer.js"></script>
+  
+</head>
+<body>
+
+  <h1>Welcome to the Kloudless JS File Explorer</h1>
+  <hr />
+
+  <h2>Documentation</h2>
+  <p>Documentation can be found on
+    <a href="https://github.com/kloudless/file-explorer" target="_blank">
+      GitHub</a>.
+  </p>
+  <p>For a version without jQuery, and with all options and event handlers, see
+      <a href="https://output.jsbin.com/yakuwah/" target="_blank">here</a>.
+  </p>
+  
+  <p>Click the Edit button in the top right corner to view the source and try it out for yourself.</p>
+
+  <h2>Example</h2>
+  <p>Click a button below to launch the Chooser or Saver.</p>
+
+  <button id="chooser">Choose a file</button>
+  <button id="saver">Save a file</button>
+
+  <h3>File information</h3>
+  <div id="file-info"><pre>Result will appear here</pre></div>
+  <textarea id="editor" rows="20" cols="50">
+    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
+    </textarea>
+
+    <div id="content"></div>
+  <script src="main.js"></script>
+  
+</body>
+</html>
