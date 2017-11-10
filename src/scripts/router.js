@@ -1,4 +1,4 @@
-define(['controllers', 'directives'], function() {
+define(['controllers', 'directives','services'], function() {
 	'use strict';
 	window.app.config(['$routeProvider',
 		function($routeProvider) {

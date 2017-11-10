@@ -12,6 +12,16 @@ body {
   display: flex;
   height: 100%;
   width: 100%;
+  padding: 0px;
+  flex-direction: column; }
+
+.markdown-editor {
+  display: flex;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
   flex-direction: column; }
 
 .instruction-banner {
@@ -29,6 +39,8 @@ body {
   justify-content: space-between; }
   .top-bar .logo {
     display: block; }
+  .top-bar .file-control button, .top-bar .file-control .info {
+    display: inline-block; }
 
 .editing-area {
   flex-grow: 1;
@@ -50,7 +62,13 @@ body {
       display: block;
       height: 100%;
       width: 100%;
-      resize: none; }
+      resize: none;
+      background: url("http://i.imgur.com/2cOaJ.png");
+      background-attachment: local;
+      background-repeat: no-repeat;
+      padding-left: 35px;
+      padding-top: 10px;
+      border-color: gray; }
   .editing-area .right-pane {
     background: gray;
     overflow-y: auto;

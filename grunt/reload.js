@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
 	grunt.config.set('reload', {
 		reload: {
-			port: 9000,
+			port: 8080,
 			proxy: {
 				host: 'localhost',
 			}

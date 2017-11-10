@@ -14,6 +14,16 @@ body
     display: flex
     height: 100%
     width: 100%
+    padding: 0px
+    flex-direction: column
+
+.markdown-editor
+    display: flex
+    position: absolute
+    top: 0px
+    right: 0px
+    left: 0px
+    bottom: 0px
     flex-direction: column
 
 .instruction-banner
@@ -32,6 +42,8 @@ body
     .logo
         display: block
     .file-control 
+        button, .info
+            display: inline-block
     
 
 .editing-area
@@ -55,6 +67,12 @@ body
             height: 100%
             width: 100%
             resize: none
+            background: url('http://i.imgur.com/2cOaJ.png')
+            background-attachment: local
+            background-repeat: no-repeat
+            padding-left: 35px
+            padding-top: 10px
+            border-color: gray
     .right-pane
         background: gray
         overflow-y: auto

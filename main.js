@@ -16,14 +16,7 @@ var explorer = window.Kloudless.explorer({
       uploadFile(files[0]);
   });
   explorer.choosify($('#chooser'));
-  
-  // Saver
-  var files = [{
-    url: "https://s3-us-west-2.amazonaws.com/static-assets.kloudless.com/static/logo_white.png",
-    name: "kloudless-logo.png"
-  }];
-  explorer.savify($("#saver"), files);
-  console.log("hahahah");
+ 
 
   function uploadFile(file) {
     var mystring = "Hello World!";
