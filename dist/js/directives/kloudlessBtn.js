@@ -14,6 +14,7 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
                     $scope.$apply();
                 });
                 $scope.isBannerClosed = false;
+                $scope.isSaving = false;
                 $scope.file = kloudlessService.file;
                 $scope.downloadId = kloudlessService.downloadId;
                 $scope.markdownStr; 
@@ -29,7 +30,7 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
                 }
                 console.log('SERVICE',kloudlessService.service);
                 $scope.folderInfo = {
-                    name : kloudlessService.file.name || "Undefined", 
+                    name : kloudlessService.file?kloudlessService.file.name:"Undefined", 
                     service: kloudlessService.service ||"Undefined"
                 };
                 $scope.timer;
@@ -64,11 +65,13 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
                     if($scope.file){
                         var file = $scope.file;
                         $scope.saveInfo = "Auto Saved..."
+                        $scope.isSaving = true;
                         kloudlessService.saveToLocation(file["account"],file['id'],file['bearer_token']['key'],$scope.markdownStr)
                             .then(function(response){
                                 console.log('file saved...', response);
                                 window.localStorage["downloadId"] = response.data.id;
                                 $scope.saveInfo = "Save";
+                                $scope.isSaving = false;
                             });
                     } else {
                         console.log('Please select a location first');
@@ -87,7 +90,7 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
                     $scope.isBannerClosed = true;
                     window.localStorage["instructionRead"] = 1; 
                 };
-                
+
                 $scope.$watchCollection('file', function(newFile){
                     if(newFile) {
                         autoSave();

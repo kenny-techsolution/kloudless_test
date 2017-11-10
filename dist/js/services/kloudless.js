@@ -29,27 +29,6 @@ define([], function() {
                 }, function (err) {
                     return err;
                 });
-                // var data = $http({
-                //     method: 'POST',
-                //     url: 'https://api.kloudless.com/v1/accounts/'+ accountId +'/storage/files/?overwrite=true',
-                //     headers:{
-                //         'X-Kloudless-Metadata': JSON.stringify({
-                //             'parent_id': folderId,
-                //             'name': 'markdown.txt'
-                //         }), 
-                //         'Authorization': 'Bearer '+ bearToken
-                //     },
-                //     contentType: 'application/json',
-                //     data: fd,
-                //     processData: false,
-                //     contentType: false
-                // })
-                // .then(function (response) {
-                //     console.log('response',response);
-                //     return response;
-                // }, function (err) {
-                //     return err;
-                // });
                 console.log("success..dfskadjflsaj");
                 return data;
             }, 
@@ -89,7 +68,13 @@ define([], function() {
                 console.log("success..dfskadjflsaj");
                 return data;
             },
-            file: JSON.parse(window.localStorage['file']),
+            file: (function(){
+                if(window.localStorage['file']) {
+                    return  JSON.parse(window.localStorage['file']);
+                } else {
+                    return null;
+                }
+            })(),
             service: window.localStorage['service'],
             downloadId: window.localStorage['downloadId']
         };

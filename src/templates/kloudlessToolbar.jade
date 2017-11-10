@@ -16,7 +16,12 @@
         .file-control
             .info Service: {{folderInfo.service}} / Folder Name: {{folderInfo.name}}
             button.btn.btn-primary#chooser Choose location
-            button.btn.btn-primary(type='submit', 'ng-click'='saveFile($event)', 'ng-if'='saveInfo!="Disabled"') {{saveInfo}}
+            button.btn.btn-primary(type='submit', 'ng-click'='saveFile($event)', 'ng-if'='saveInfo!="Disabled"&&isSaving==false') {{saveInfo}}
+            div.saving-status('ng-show'='isSaving')
+                #loading-bar-spinner.spinner
+                    .spinner-icon
+                span Your file is being saved ...
+
     .editing-area
         .left-pane.pane
             .header 
