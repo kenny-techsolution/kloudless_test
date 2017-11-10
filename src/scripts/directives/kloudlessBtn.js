@@ -8,6 +8,12 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
             replace: true,
             template: kloudlessToolbar,
             link: function($scope, $element, $attrs, $ctrl){
+                $element.find('textarea').on("input propertychange", function(){
+                    console.log("ahah", marked($element.find('textarea').val()));
+                    document.getElementById('content').innerHTML = marked($element.find('textarea').val());
+                    $scope.$apply();
+                });
+                $scope.isBannerClosed = false;
                 $scope.file = kloudlessService.file;
                 $scope.downloadId = kloudlessService.downloadId;
                 $scope.markdownStr; 
@@ -58,7 +64,7 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
                     if($scope.file){
                         var file = $scope.file;
                         $scope.saveInfo = "Auto Saved..."
-                        kloudlessService.saveToLocation(file["account"],file['id'],file['bearer_token']['key'],'test string hello world')
+                        kloudlessService.saveToLocation(file["account"],file['id'],file['bearer_token']['key'],$scope.markdownStr)
                             .then(function(response){
                                 console.log('file saved...', response);
                                 window.localStorage["downloadId"] = response.data.id;
@@ -77,7 +83,11 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
                         $scope.saveFile();
                     }, 10000);
                 }
-
+                $scope.closeInstruction = function(){
+                    $scope.isBannerClosed = true;
+                    window.localStorage["instructionRead"] = 1; 
+                };
+                
                 $scope.$watchCollection('file', function(newFile){
                     if(newFile) {
                         autoSave();
@@ -85,6 +95,17 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
                         clearInterval($scope.timer);
                     }
                 });
+
+                setTimeout(function(){
+                    console.log("marked content..... ");
+                    document.getElementById('content').innerHTML = marked($scope.markdownStr);
+                    $scope.$apply();
+                },3000);
+
+                if(window.localStorage["instructionRead"]==1){
+                    $scope.isBannerClosed = true;
+                }
+
             }
         };
     }

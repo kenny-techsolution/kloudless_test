@@ -1,35 +1,28 @@
 .markdown-editor
-    .instruction-banner
-        h2 instruction
+    .instruction-banner-close('ng-show'='isBannerClosed==true')
+        h4 Instruction
+        a.show-me('ng-click'='isBannerClosed=false') show me
+    .instruction-banner-open('ng-show'='isBannerClosed==false')
+        h2 Instruction
         ol
             li Select a folder from your cloud services.
             li Edit the markdown on the left, preview it as HTML on the right.
             li Click the save button to save the file or let the app save it periodically.
+        a.got-it('ng-click'='closeInstruction()') Got it!
     .top-bar
-        h2.logo Markdown Editor
+        .logo
+            img(data-bind='attr: {src: "https://s3-us-west-2.amazonaws.com/static-assets.kloudless.com/ext-assets/settings_popup_logo.png"}', src='https://s3-us-west-2.amazonaws.com/static-assets.kloudless.com/ext-assets/settings_popup_logo.png')
+            h4 Markdown Editor
         .file-control
+            .info Service: {{folderInfo.service}} / Folder Name: {{folderInfo.name}}
             button.btn.btn-primary#chooser Choose location
-            .info {{folderInfo.service}} {{folderInfo.name}}
             button.btn.btn-primary(type='submit', 'ng-click'='saveFile($event)', 'ng-if'='saveInfo!="Disabled"') {{saveInfo}}
     .editing-area
         .left-pane.pane
-            textarea {{markdownStr}}
-        .right-pane.pane
-            h4 tiasdtioasjdt
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
-            p asdfasdfasdfasdfasdfasdfasdfasdfsadf
+            .header 
+                .header-text Markdown Editor
+            textarea('ng-model'='markdownStr') {{markdownStr}}
+        .right-pane.pane.markdown-body
+            .header 
+                .header-text Rendered HTML
+            #content

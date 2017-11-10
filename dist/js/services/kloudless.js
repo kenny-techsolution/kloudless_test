@@ -3,7 +3,7 @@ define([], function() {
     function kloudlessService($http) {
         return {
             saveToLocation: function (accountId, folderId,bearToken, contentStr) {
-                console.log('save To Location');
+                console.log('save To Location',contentStr);
                 var myblob = new Blob([contentStr], {
                     type: 'text/plain'
                 });
