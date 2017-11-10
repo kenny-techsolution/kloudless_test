@@ -1,4 +1,4 @@
-define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar) {
+define(['text!../../templates/kloudlessMarkdownEditor.html'], function(kloudlessMarkdownEditor) {
 	'use strict';
     function kloudlessMarkdownEditorDirective(kloudlessService){
         return {
@@ -6,7 +6,7 @@ define(['text!../../templates/kloudlessToolbar.html'], function(kloudlessToolbar
             scope: {
             },
             replace: true,
-            template: kloudlessToolbar,
+            template: kloudlessMarkdownEditor,
             link: function($scope, $element, $attrs, $ctrl){
                 $scope.isBannerClosed = false;
                 $scope.isSaving = false;
