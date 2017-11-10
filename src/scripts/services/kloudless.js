@@ -3,7 +3,6 @@ define([], function() {
     function kloudlessService($http) {
         return {
             saveToLocation: function (accountId, folderId,bearToken, contentStr) {
-                console.log('save To Location',contentStr);
                 var myblob = new Blob([contentStr], {
                     type: 'text/plain'
                 });
@@ -24,12 +23,10 @@ define([], function() {
                     }
                 })
                 .then(function (response) {
-                    console.log('response',response);
                     return response;
                 }, function (err) {
                     return err;
                 });
-                console.log("success..dfskadjflsaj");
                 return data;
             }, 
             getAccountDetail: function(accountId, bearToken){
@@ -42,12 +39,10 @@ define([], function() {
                     contentType: 'application/json'
                 })
                 .then(function (response) {
-                    console.log('account response',response);
                     return response;
                 }, function (err) {
                     return err;
                 });
-                console.log("success..dfskadjflsaj");
                 return data;                
             },
             downloadFile: function(accountId, fileId, bearToken){
@@ -60,12 +55,10 @@ define([], function() {
                     contentType: 'application/json'
                 })
                 .then(function (response) {
-                    console.log('download content',response);
                     return response;
                 }, function (err) {
                     return err;
                 });
-                console.log("success..dfskadjflsaj");
                 return data;
             },
             file: (function(){

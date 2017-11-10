@@ -5,4 +5,3 @@ var explorer = window.Kloudless.explorer({
     'retrieve_token': true,
     'persist': 'local'
   });
-  console.log(explorer);
